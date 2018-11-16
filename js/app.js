@@ -84,7 +84,7 @@ Horns.clearPage = () => {
   Horns.allHornsArray.forEach(horn => horn.clearImage());
 }
 
-$(() => Horns.readJson());
+$(() => Horns.readJson1());
 
 
 //populates the dropdownlist

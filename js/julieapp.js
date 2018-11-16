@@ -1,5 +1,7 @@
 'use strict';
 
+// 11-15-18 jl stop using this file since i am in my own respository now.
+
 //make a constructor funtion
 function Horns (obj) {
   this.url = obj.image_url;
