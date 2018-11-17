@@ -96,28 +96,34 @@ $('select').on('change', function(event) {
   //clear images
   Horns.clearPage();
   let getKey = event.target.value;
+  console.log(getKey);
   Horns.allHornsArray.forEach( hornObj => {
-    if (getKey === hornObj.keyword) {
-      // Horns.filteredListArray.push(hornObj);
+    if (getKey === 'default') {
+      hornObj.render();
+    } else if (getKey === hornObj.keyword) {
       hornObj.render();
     }
   })
-  // Horns.filteredListArray.forEach(horn => horn.render());
 
 });
 
-$('#page1').on('click', function(event) {
-  console.log('on page 1');
-  Horns.clearPage();
-  $(() => Horns.readJson1());
-});
+// $('#page1').on('click', function(event) {
+//   console.log('on page 1');
+//   Horns.clearPage();
+//   Horns.allHornsArray = [];
+//   Horns.listArrayKeys = [];
+//   Horns.listArray = [];
+//   Horns.filteredListArray = [];
+//   $(() => Horns.readJson1());
+// });
 
-$('#page2').on('click', function(event) {
-  console.log('on page 2');
-  // Horns.clearPage();
-  Horns.allHornsArray = [];
-  console.log('before readjson2 ', Horns.allHornsArray);
-  $(() => Horns.readJson2());
-  console.log('after readjson2 ', Horns.allHornsArray);
-});
+// $('#page2').on('click', function(event) {
+//   console.log('on page 1');
+//   Horns.clearPage();
+//   Horns.allHornsArray = [];
+//   Horns.listArrayKeys = [];
+//   Horns.listArray = [];
+//   Horns.filteredListArray = [];
+//   $(() => Horns.readJson2());
+// });
 
