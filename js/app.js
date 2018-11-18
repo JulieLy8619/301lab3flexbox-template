@@ -21,18 +21,6 @@ Horns.prototype.render = function() {
   return template(this);
 }
 
-// $('main').append('<div class="clone"></div>')
-// let hornClone = $('div[class="clone"]');
-// let hornHtml = $('#photo-template').html();
-// hornClone.html(hornHtml);
-// hornClone.find('h2').text(this.title);
-// hornClone.find('img').attr('src', this.url);
-// hornClone.find('p').text(this.description);
-// hornClone.removeClass('clone');
-// hornClone.attr('class', this.title);
-
-
-
 Horns.prototype.makeList = function () {
   if (!Horns.listArrayKeys.includes(this.keyword)) {
     Horns.listArrayKeys.push(this.keyword);
@@ -50,7 +38,6 @@ Horns.prototype.list = function () {
 
 Horns.prototype.clearImage = function (){
   $('div').remove();
-  // $('option').remove();
 }
 
 //get information from json and populate template, which also then renders to screen.
@@ -106,9 +93,9 @@ $('select').on('change', function(event) {
   // console.log(getKey);
   Horns.allHornsArray.forEach( hornObj => {
     if (getKey === 'default') {
-      hornObj.render();
+      $('#photo-location').append(hornObj.render());
     } else if (getKey === hornObj.keyword) {
-      hornObj.render();
+      $('#photo-location').append(hornObj.render());
     }
   })
 
