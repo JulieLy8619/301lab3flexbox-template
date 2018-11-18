@@ -16,16 +16,22 @@ Horns.listArray = [];
 Horns.filteredListArray = [];
 
 Horns.prototype.render = function() {
-  $('main').append('<div class="clone"></div>')
-  let hornClone = $('div[class="clone"]');
-  let hornHtml = $('#photo-template').html();
-  hornClone.html(hornHtml);
-  hornClone.find('h2').text(this.title);
-  hornClone.find('img').attr('src', this.url);
-  hornClone.find('p').text(this.description);
-  hornClone.removeClass('clone');
-  hornClone.attr('class', this.title);
+  const source = $('image-template').html();
+  const template = Handlebars.compile(source);
+  return template(this);
 }
+
+// $('main').append('<div class="clone"></div>')
+// let hornClone = $('div[class="clone"]');
+// let hornHtml = $('#photo-template').html();
+// hornClone.html(hornHtml);
+// hornClone.find('h2').text(this.title);
+// hornClone.find('img').attr('src', this.url);
+// hornClone.find('p').text(this.description);
+// hornClone.removeClass('clone');
+// hornClone.attr('class', this.title);
+
+
 
 Horns.prototype.makeList = function () {
   if (!Horns.listArrayKeys.includes(this.keyword)) {
@@ -73,7 +79,10 @@ Horns.readJson2 = () => {
 }
 
 Horns.loadHorns = () => {
-  Horns.allHornsArray.forEach(horn => horn.render());
+  // Horns.allHornsArray.forEach(horn => horn.render());
+  Horns.allHornsArray.forEach( horn => {
+    $('#photo-template').append(horn.render());
+  })
 }
 
 Horns.populateForm= () => {
