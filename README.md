@@ -33,7 +33,7 @@ Estimate of time needed to complete: 4hrs
 Start time: 12:00
 Finish time: 12:30
 
-Start time: _____
+Start time: 1:15
 Finish time: _____
 
 Start time: _____

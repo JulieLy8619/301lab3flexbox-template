@@ -16,7 +16,7 @@ Horns.listArray = [];
 Horns.filteredListArray = [];
 
 Horns.prototype.render = function() {
-  const source = $('image-template').html();
+  const source = $('#image-template').html();
   const template = Handlebars.compile(source);
   return template(this);
 }
@@ -81,7 +81,7 @@ Horns.readJson2 = () => {
 Horns.loadHorns = () => {
   // Horns.allHornsArray.forEach(horn => horn.render());
   Horns.allHornsArray.forEach( horn => {
-    $('#photo-template').append(horn.render());
+    $('#photo-location').append(horn.render());
   })
 }
 
