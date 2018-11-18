@@ -4,6 +4,27 @@ html {
   margin-right:auto;
   font-family: 'Roboto', sans-serif;
 }
+header {
+  width: 960px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+button {
+  margin-right: 5px;
+  background-color: rgb(137, 137, 163);
+  border-radius: 5px;
+}
+
+select {
+  margin:auto;
+}
+
+input {
+  margin:5px;
+}
+
 body {
   background: rgb(92, 155, 155);
 }
@@ -64,6 +85,7 @@ main {
 }
 
 h1 {
+  width: 960px;
   font-size: 180%;
   text-align: center;
 }
