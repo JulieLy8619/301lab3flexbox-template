@@ -34,9 +34,32 @@ Start time: 12:00
 Finish time: 12:30
 
 Start time: 1:15
-Finish time: _____
+Finish time: 2:15
 
-Start time: _____
-Finish time: _____
+Actual time needed to complete: 1.5 hrs
 
-Actual time needed to complete: _____
+--------------------
+
+Number and name of feature: Feature 3: Styling with Flexbox
+
+Estimate of time needed to complete: 2 hrs
+
+11-18-18
+Start time: 2:15
+Finish time: 2:30
+
+Actual time needed to complete: 15 mins
+
+--------------------
+
+Number and name of feature: Feature 4: Sort the images
+
+Estimate of time needed to complete: 3 hrs
+
+11-18-18
+Start time: 2:30
+Finish time: 
+
+Actual time needed to complete: 15 mins
+
+
