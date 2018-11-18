@@ -35,12 +35,16 @@ Horns.prototype.makeList = function () {
 }
 
 Horns.prototype.list = function () {
+
   let filterList = $('select');
   filterList.append($('<option></option>').val(this.keyword).html(this.keyword))
+
+
 };
 
 Horns.prototype.clearImage = function (){
   $('div').remove();
+  // $('option').remove();
 }
 
 //get information from json and populate template, which also then renders to screen.
@@ -63,7 +67,6 @@ Horns.readJson2 = () => {
         Horns.allHornsArray.push(new Horns(obj));
       })
     })
-    // console.log('while readjson2 ' + Horns.allHornsArray);
     .then(Horns.loadHorns)
     .then(Horns.populateList)
     .then(Horns.populateForm)
@@ -87,16 +90,11 @@ Horns.clearPage = () => {
 $(() => Horns.readJson1());
 
 
-//populates the dropdownlist
-
-//clickhandler
-
-
 $('select').on('change', function(event) {
   //clear images
   Horns.clearPage();
   let getKey = event.target.value;
-  console.log(getKey);
+  // console.log(getKey);
   Horns.allHornsArray.forEach( hornObj => {
     if (getKey === 'default') {
       hornObj.render();
@@ -107,23 +105,30 @@ $('select').on('change', function(event) {
 
 });
 
-// $('#page1').on('click', function(event) {
-//   console.log('on page 1');
-//   Horns.clearPage();
-//   Horns.allHornsArray = [];
-//   Horns.listArrayKeys = [];
-//   Horns.listArray = [];
-//   Horns.filteredListArray = [];
-//   $(() => Horns.readJson1());
-// });
+$('#page1').on('click', function(event) {
+  console.log('on page 1');
+  Horns.clearPage();
+  $('option').remove();
+  let clearedFilterList1 = $('select');
+  clearedFilterList1.append($('<option></option>').val('default').html('Filter by Keyword'));
 
-// $('#page2').on('click', function(event) {
-//   console.log('on page 1');
-//   Horns.clearPage();
-//   Horns.allHornsArray = [];
-//   Horns.listArrayKeys = [];
-//   Horns.listArray = [];
-//   Horns.filteredListArray = [];
-//   $(() => Horns.readJson2());
-// });
+  Horns.allHornsArray = [];
+  Horns.listArrayKeys = [];
+  Horns.listArray = [];
+  Horns.filteredListArray = [];
+  $(() => Horns.readJson1());
+});
 
+$('#page2').on('click', function(event) {
+  console.log('on page 1');
+  Horns.clearPage();
+  $('option').remove();
+  let clearedFilterList2 = $('select');
+  clearedFilterList2.append($('<option></option>').val('default').html('Filter by Keyword'));
+
+  Horns.allHornsArray = [];
+  Horns.listArrayKeys = [];
+  Horns.listArray = [];
+  Horns.filteredListArray = [];
+  $(() => Horns.readJson2());
+});

@@ -80,6 +80,7 @@ span {
   width: 100%;
 }
 
+/* need to fix foot to float to end */
 footer {
   position: fixed;
   left: 0;
