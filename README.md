@@ -30,8 +30,8 @@ Number and name of feature: Feature 2: Templating
 Estimate of time needed to complete: 4hrs
 
 11-18-18
-Start time: _____
-Finish time: _____
+Start time: 12:00
+Finish time: 12:30
 
 Start time: _____
 Finish time: _____
