@@ -13,7 +13,8 @@ function Horns (obj) {
 Horns.allHornsArray = [];
 Horns.listArrayKeys = [];
 Horns.listArray = [];
-Horns.filteredListArray = [];
+Horns.sortedTitleArray = [];
+Horns.sortedHornArray = [];
 
 Horns.prototype.render = function() {
   const source = $('#image-template').html();
@@ -83,14 +84,13 @@ Horns.clearPage = () => {
   Horns.allHornsArray.forEach(horn => horn.clearImage());
 }
 
+//default page one is displayed
 $(() => Horns.readJson1());
 
-
+//for filter list by keyword
 $('select').on('change', function(event) {
-  //clear images
   Horns.clearPage();
   let getKey = event.target.value;
-  // console.log(getKey);
   Horns.allHornsArray.forEach( hornObj => {
     if (getKey === 'default') {
       $('#photo-location').append(hornObj.render());
@@ -98,9 +98,37 @@ $('select').on('change', function(event) {
       $('#photo-location').append(hornObj.render());
     }
   })
-
 });
 
+//for sort by title or horn
+//sort by horn number works, but i can't get it to sort by title
+//i sorted the titles like i sorted the last names in challenge 3, which worked, so why doesn't it work here
+$('input:radio').on('change', function(event) {
+  Horns.clearPage();
+  let sortKey = event.target.value;
+  if (sortKey === 'title') {
+    console.log('in title');
+    Horns.sortedTitleArray = Horns.allHornsArray;
+    Horns.sortedTitleArray.sort( (a,b) => {
+      return ((a.title > b.title) ? 1 : (b.title > a.title ? -1 : 0));
+    })
+    Horns.sortedTitleArray.forEach( horn => {
+      $('#photo-location').append(horn.render());
+    })
+
+  } else if (sortKey === 'horns') {
+    console.log('in horns');
+    Horns.sortedHornArray = Horns.allHornsArray;
+    Horns.sortedHornArray.sort( (a,b) => {
+      return (a.horn - b.horn);
+    });
+    Horns.sortedHornArray.forEach( horn => {
+      $('#photo-location').append(horn.render());
+    })
+  }
+})
+
+//for if page one button is clicked
 $('#page1').on('click', function(event) {
   console.log('on page 1');
   Horns.clearPage();
@@ -111,10 +139,11 @@ $('#page1').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.filteredListArray = [];
+  Horns.sortedTitleArray = [];
   $(() => Horns.readJson1());
 });
 
+//for page 2 button is clicked
 $('#page2').on('click', function(event) {
   console.log('on page 1');
   Horns.clearPage();
@@ -125,6 +154,6 @@ $('#page2').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.filteredListArray = [];
+  Horns.sortedTitleArray = [];
   $(() => Horns.readJson2());
 });

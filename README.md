@@ -58,8 +58,14 @@ Estimate of time needed to complete: 3 hrs
 
 11-18-18
 Start time: 2:30
-Finish time: 
+Finish time: 4:30
+Start time: 9:30
+Finish time: 10:30
 
-Actual time needed to complete: 15 mins
+11-19-18 
+Start time: 9:00
+Finish time: 9:15
+
+Actual time needed to complete: 3.25 hours
 
 
