@@ -13,7 +13,7 @@ function Horns (obj) {
 Horns.allHornsArray = [];
 Horns.listArrayKeys = [];
 Horns.listArray = [];
-Horns.sortedListArray = [];
+Horns.sortedTitleArray = [];
 Horns.sortedHornArray = [];
 
 Horns.prototype.render = function() {
@@ -101,26 +101,30 @@ $('select').on('change', function(event) {
 });
 
 //for sort by title or horn
+//sort by horn number works, but i can't get it to sort by title
+//i sorted the titles like i sorted the last names in challenge 3, which worked, so why doesn't it work here
 $('input:radio').on('change', function(event) {
+  Horns.clearPage();
   let sortKey = event.target.value;
   if (sortKey === 'title') {
     console.log('in title');
-    Horns.sortedListArray = Horns.allHornsArray;
-    Horns.sortedListArray.sort( (a,b) => {
+    Horns.sortedTitleArray = Horns.allHornsArray;
+    Horns.sortedTitleArray.sort( (a,b) => {
+      console.log('a.title ' + a.title);
+      console.log('b.title ' + b.title);
       return (a.title > b.title);
     })
-
-    console.log('sorted arr ' + Horns.sortedListArray[0].title);
-    Horns.sortedListArray.forEach( horn => {
+    Horns.sortedTitleArray.forEach( horn => {
       $('#photo-location').append(horn.render());
     })
-    // console.log('all horns ' + Horns.allHornsArray);
-    
+
   } else if (sortKey === 'horns') {
     console.log('in horns');
     Horns.sortedHornArray = Horns.allHornsArray;
-    Horns.sortedHornArray.sort();
-    Horns.sortedListArray.forEach( horn => {
+    Horns.sortedHornArray.sort( (a,b) => {
+      return (a.horn - b.horn);
+    });
+    Horns.sortedHornArray.forEach( horn => {
       $('#photo-location').append(horn.render());
     })
   }
@@ -137,7 +141,7 @@ $('#page1').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.sortedListArray = [];
+  Horns.sortedTitleArray = [];
   $(() => Horns.readJson1());
 });
 
@@ -152,6 +156,6 @@ $('#page2').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.sortedListArray = [];
+  Horns.sortedTitleArray = [];
   $(() => Horns.readJson2());
 });
