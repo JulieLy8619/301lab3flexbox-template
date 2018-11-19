@@ -110,9 +110,7 @@ $('input:radio').on('change', function(event) {
     console.log('in title');
     Horns.sortedTitleArray = Horns.allHornsArray;
     Horns.sortedTitleArray.sort( (a,b) => {
-      console.log('a.title ' + a.title);
-      console.log('b.title ' + b.title);
-      return (a.title > b.title);
+      return ((a.title > b.title) ? 1 : (b.title > a.title ? -1 : 0));
     })
     Horns.sortedTitleArray.forEach( horn => {
       $('#photo-location').append(horn.render());
