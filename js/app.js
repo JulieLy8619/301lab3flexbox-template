@@ -13,7 +13,8 @@ function Horns (obj) {
 Horns.allHornsArray = [];
 Horns.listArrayKeys = [];
 Horns.listArray = [];
-Horns.filteredListArray = [];
+Horns.sortedListArray = [];
+Horns.sortedHornArray = [];
 
 Horns.prototype.render = function() {
   const source = $('#image-template').html();
@@ -83,14 +84,13 @@ Horns.clearPage = () => {
   Horns.allHornsArray.forEach(horn => horn.clearImage());
 }
 
+//default page one is displayed
 $(() => Horns.readJson1());
 
-
+//for filter list by keyword
 $('select').on('change', function(event) {
-  //clear images
   Horns.clearPage();
   let getKey = event.target.value;
-  // console.log(getKey);
   Horns.allHornsArray.forEach( hornObj => {
     if (getKey === 'default') {
       $('#photo-location').append(hornObj.render());
@@ -98,9 +98,35 @@ $('select').on('change', function(event) {
       $('#photo-location').append(hornObj.render());
     }
   })
-
 });
 
+//for sort by title or horn
+$('input:radio').on('change', function(event) {
+  let sortKey = event.target.value;
+  if (sortKey === 'title') {
+    console.log('in title');
+    Horns.sortedListArray = Horns.allHornsArray;
+    Horns.sortedListArray.sort( (a,b) => {
+      return (a.title > b.title);
+    })
+
+    console.log('sorted arr ' + Horns.sortedListArray[0].title);
+    Horns.sortedListArray.forEach( horn => {
+      $('#photo-location').append(horn.render());
+    })
+    // console.log('all horns ' + Horns.allHornsArray);
+    
+  } else if (sortKey === 'horns') {
+    console.log('in horns');
+    Horns.sortedHornArray = Horns.allHornsArray;
+    Horns.sortedHornArray.sort();
+    Horns.sortedListArray.forEach( horn => {
+      $('#photo-location').append(horn.render());
+    })
+  }
+})
+
+//for if page one button is clicked
 $('#page1').on('click', function(event) {
   console.log('on page 1');
   Horns.clearPage();
@@ -111,10 +137,11 @@ $('#page1').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.filteredListArray = [];
+  Horns.sortedListArray = [];
   $(() => Horns.readJson1());
 });
 
+//for page 2 button is clicked
 $('#page2').on('click', function(event) {
   console.log('on page 1');
   Horns.clearPage();
@@ -125,6 +152,6 @@ $('#page2').on('click', function(event) {
   Horns.allHornsArray = [];
   Horns.listArrayKeys = [];
   Horns.listArray = [];
-  Horns.filteredListArray = [];
+  Horns.sortedListArray = [];
   $(() => Horns.readJson2());
 });
