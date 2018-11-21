@@ -67,7 +67,9 @@ Horns.readJson2 = () => {
 }
 
 Horns.loadHorns = () => {
-  // Horns.allHornsArray.forEach(horn => horn.render());
+  Horns.allHornsArray.sort( (a,b) => {
+    return ((a.title > b.title) ? 1 : (b.title > a.title ? -1 : 0));
+  })
   Horns.allHornsArray.forEach( horn => {
     $('#photo-location').append(horn.render());
   })
@@ -84,8 +86,12 @@ Horns.clearPage = () => {
   Horns.allHornsArray.forEach(horn => horn.clearImage());
 }
 
+
+
+
 //default page one is displayed
 $(() => Horns.readJson1());
+
 
 //for filter list by keyword
 $('select').on('change', function(event) {
@@ -130,6 +136,8 @@ $('input:radio').on('change', function(event) {
 
 //for if page one button is clicked
 $('#page1').on('click', function(event) {
+  $('input[value="title"]').prop('checked', false);
+  $('input[value="horns"]').prop('checked', false);
   console.log('on page 1');
   Horns.clearPage();
   $('option').remove();
@@ -145,6 +153,8 @@ $('#page1').on('click', function(event) {
 
 //for page 2 button is clicked
 $('#page2').on('click', function(event) {
+  $('input[value="title"]').prop('checked', false);
+  $('input[value="horns"]').prop('checked', false);
   console.log('on page 1');
   Horns.clearPage();
   $('option').remove();
